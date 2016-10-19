@@ -2,10 +2,11 @@ var express = require('express')
 var app = express()
 var layout = require('express-ejs-layouts')
 var bodyParser = require('body-parser')
+var dotenv = require('dotenv')
 
 var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/donut-shop')
+//mongoose.connect('mongodb://localhost/donut-shop')
 
 dotenv.load({path: '.env.' + process.env.NODE_ENV})
 mongoose.connect(process.env.MONGO_URI)
@@ -33,5 +34,5 @@ app.use('/api/donuts', ajaxRoutes) // only handle ajax request
 app.use('/users', usersRoutes)
 app.use('/api/users', usersAPIRoutes)
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
 console.log('Server started')
