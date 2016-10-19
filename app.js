@@ -7,10 +7,13 @@ var mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/donut-shop')
 
+dotenv.load({path: '.env.' + process.env.NODE_ENV})
+mongoose.connect(process.env.MONGO_URI)
+
 app.set('view engine', 'ejs')
 app.use(layout)
 
-// serve static files
+
 app.use(express.static(__dirname + '/public'))
 
 var frontendRoutes = require('./routes/donuts')
