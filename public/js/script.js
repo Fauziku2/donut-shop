@@ -23,6 +23,6 @@ $(document).ready(function ($) {
 
   function doSomething (data) {
     alert('form submitted, new users created')
-    $('#all-user-list').append('<li>' + data.name + data.email + data.password + '</li>')
+    $('#all-user-list').append('<li>' + data.local.name+'<br>' + data.local.email +'<br>'+ data.local.password + '</li>')
   }
 })
